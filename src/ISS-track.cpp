@@ -1,16 +1,53 @@
 // demo file for tracking ISS
 
+#include <iostream>
 #include "../libsgp4/CoordTopocentric.h"
 #include "../libsgp4/CoordGeodetic.h"
 #include "../libsgp4/Observer.h"
 #include "../libsgp4/SGP4.h"
-
-#include <iostream>
+#include "../include/Dish.h"
+#include "../include/Satellite.h"
 
 using std::cout;
 using std::endl;
 
+
+/** 
+ * notes:
+ * 2 states:
+ *  1) satellite in view
+ *      - follow through sky
+ *      - allow data transmission
+ *  2) satellite out of view
+ *      - move to next visible location
+ *      - wait until visible
+ */
+
+
 int main() {
+    Dish groundstation;
+    Satellite spacehauc;
+
+    while(true) {
+        if (spacehauc.isVisibleFrom(groundstation)) {
+            groundstation.transmit();
+            groundstation.track();
+        } else if (groundstation.status() == isWaiting) {
+            groundstation.wait();
+        } else {
+            groundstation.moveToNext();
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+int old_main() {
 // Assume dish is on top of LoCSST, altitude roughly 40 meters (0.040km)
     Observer groundstation_location(42.649558, -71.316263, 0.040);
     Tle iss_tle = Tle("ISS (ZARYA)             ",

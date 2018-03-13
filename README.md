@@ -3,6 +3,7 @@
 This program uses the libraries provided by Daniel Warner's sgp4 library, you can see the source code at his [github repository](https://github.com/dnwrnr/sgp4), and you can learn more about it on his website, https://www.danrw.com/sgp4/. 
 
 The SGP4 Library is: 
+
 Copyright 2017 Daniel Warner
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,6 +19,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 The SPACEHAUC implementation of the SGP4 library is:
+
 Copyright 2018 SPACEHAUC Groundstation Team
 
 Licensed under the GNU General Public License version 3.0. 

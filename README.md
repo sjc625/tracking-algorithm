@@ -1,8 +1,25 @@
-<!-- Replace the below line with your own Travis-CI build label. -->
-<!-- [![Build Status](https://travis-ci.org/DarrienG/C-DH_Space_Hello_World.svg?branch=feature/dglasser/45_name_battery)](https://travis-ci.org/DarrienG/C-DH_Space_Hello_World) -->
-[![Managed with Taiga.io](https://camo.githubusercontent.com/eec9589abe09569dc4a1706b36527b49051b89db/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d616e61676564253230776974682d54616967612e696f2d677265656e2e737667)](https://taiga.io "Managed with Taiga.io")
+[![Build Status](https://travis-ci.org/SpaceHAUC-Command-and-Data-Handling/tracking-algorithm.svg?branch=master)](https://travis-ci.org/SpaceHAUC-Command-and-Data-Handling/tracking-algorithm)
 
+This program uses the libraries provided by Daniel Warner's sgp4 library, you can see the source code at his [github repository](https://github.com/dnwrnr/sgp4), and you can learn more about it on his website, https://www.danrw.com/sgp4/. 
 
-# Add text describing project
+The SGP4 Library is: 
+Copyright 2017 Daniel Warner
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+The SPACEHAUC implementation of the SGP4 library is:
+Copyright 2018 SPACEHAUC Groundstation Team
+
+Licensed under the GNU General Public License version 3.0. 
 
 [![GPL License](http://darrienglasser.com/gpl-v3-logo.jpg)](http://www.gnu.org/licenses/gpl-3.0.en.html)

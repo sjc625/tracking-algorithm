@@ -11,25 +11,32 @@
 #include "../libsgp4/CoordGeodetic.h"
 #include "../libsgp4/Observer.h"
 #include "../libsgp4/SGP4.h"
+#include "../include/Satellite.h"
+
 
 enum DISH_STATUS {
-    isWaiting,
-    isTracking,
-    isTransmitting
+    WAITING,
+    ON_TARGET,
+    MOVING,
+    TRANSMITING
 };
 
 
 class Dish {
  private:
-    Observer location;
+    Observer mLocation;
+    DISH_STATUS mCurrentStatus;
+    Satellite mTarget;
+    void move();
  public:
     Dish();
     Dish(double latitude, double longitude, double elevation);
     void transmit();
     void track();
-    DISH_STATUS status() const;
+    inline DISH_STATUS status() const;
     void wait();
     void moveToNext();
+    inline void setTarget(const Satellite &target);
 };
 
 

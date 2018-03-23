@@ -8,7 +8,6 @@
 #define INCLUDE_SATELLITE_H_
 
 #include <string>
-#include "../include/Dish.h"
 #include "../libsgp4/CoordGeodetic.h"
 #include "../libsgp4/CoordTopocentric.h"
 #include "../libsgp4/Observer.h"
@@ -16,15 +15,18 @@
 
 class Satellite {
  private:
-  const Tle mTle;
+  Tle mTle;
+  std::string mName;
 
  public:
-  Satellite();
   explicit Satellite(const Tle &tle) : mTle(tle) {}
   Satellite(const std::string &satelliteName, const std::string &tleLine1,
             const std::string &tleLine2)
       : mTle(Tle(satelliteName, tleLine1, tleLine2)) {}
-  bool isVisibleFrom(const Dish &location);
+  Satellite operator=(const Satellite &rvalue) {
+    mTle = rvalue.mTle;
+    return *this;
+  }
 };
 
 #endif  // INCLUDE_SATELLITE_H_

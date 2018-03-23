@@ -35,7 +35,6 @@ const char TLE2[] =
 *  2) satellite out of view
 *      - move to next visible location
 *      - wait until visible
-* Maybe want a separate thread for user interface?
 */
 
 int main() {
@@ -44,14 +43,16 @@ int main() {
   groundstation.setTarget(spacehauc);
 
   while (true) {
-    if (spacehauc.isVisibleFrom(groundstation) &&
-        groundstation.status() == ON_TARGET) {
+    // TODO(djbaumann): maybe add a user interface in a separate thread
+    // for controlling the dish & sending commands
+    if (groundstation.targetVisible() && groundstation.status() == ON_TARGET) {
       groundstation.transmit();
       groundstation.track();
-    } else if (groundstation.status() == WAITING) {
+    } else if (!groundstation.targetVisible() &&
+               groundstation.status() == WAITING) {
       groundstation.wait();
     } else {
-      groundstation.moveToNext();
+      groundstation.moveToNextAppearance();
     }
   }
 

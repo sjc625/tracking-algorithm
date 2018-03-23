@@ -1,6 +1,3 @@
-#include "../include/Satellite.h"
+// Copyright 2018 SPACEHAUC Groundstation Team, David Baumann
 
-bool Satellite::isVisibleFrom(const Dish &location) {
-  // stub for now
-  return false;
-}
+#include "../include/Satellite.h"

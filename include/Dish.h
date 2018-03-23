@@ -23,14 +23,15 @@ class Dish {
   void move();
 
  public:
-  Dish();
-  Dish(double latitude, double longitude, double elevation);
+  Dish(double latitude, double longitude, double elevation)
+      : mLocation(latitude, longitude, elevation), mTarget("", "", "") {}
   void transmit();
   void track();
-  inline DISH_STATUS status() const;
+  DISH_STATUS status() const { return mCurrentStatus; }
   void wait();
-  void moveToNext();
-  inline void setTarget(const Satellite &target);
+  void moveToNextAppearance();
+  void setTarget(const Satellite &target) { mTarget = target; }
+  bool targetVisible() const;
 };
 
 #endif  // INCLUDE_DISH_H_

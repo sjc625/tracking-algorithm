@@ -23,6 +23,7 @@ class Satellite {
   Satellite(const std::string &satelliteName, const std::string &tleLine1,
             const std::string &tleLine2)
       : mTle(Tle(satelliteName, tleLine1, tleLine2)) {}
+  Tle getTle() const { return mTle; }
   Satellite operator=(const Satellite &rvalue) {
     mTle = rvalue.mTle;
     return *this;

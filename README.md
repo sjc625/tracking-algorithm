@@ -2,7 +2,7 @@
 
 This program uses the libraries provided by Daniel Warner's sgp4 library, you can see the source code at his [github repository](https://github.com/dnwrnr/sgp4), and you can learn more about it on his website, https://www.danrw.com/sgp4/. 
 
-The SGP4 Library is: 
+## The SGP4 Library: 
 
 Copyright 2017 Daniel Warner
 
@@ -18,7 +18,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-The SPACEHAUC implementation of the SGP4 library is:
+Note that Daniel Warner's example code located at his github repository was used as an example for creating some of the algroithms in this program.
+
+
+## The SPACEHAUC implementation of the SGP4 library:
 
 Copyright 2018 SPACEHAUC Groundstation Team
 

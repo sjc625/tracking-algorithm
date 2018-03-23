@@ -15,16 +15,22 @@ using std::cout;
 using std::endl;
 
 // Groundstation Location Data
-const double LATITUDE = 42.649558;    // degrees
-const double LONGITUDE = -71.316263;  // degrees
+const double LATITUDE = 42.649558;    // degrees (N)
+const double LONGITUDE = -71.316263;  // degrees (W)
 const double ELEVATION = 0.040;       // km
 
 // Satellite Data (Using ISS Data for now)
 const char NAME[] = "ISS (ZARYA)             ";
+/*
 const char TLE1[] =
-    "1 25544U 98067A   18072.01686465  .00002475  00000-0  44458-4 0  9991";
+    "1 25544U 98067A   18082.87282200  .00016717  00000-0  10270-3 0  9016";
 const char TLE2[] =
-    "2 25544  51.6420 138.1426 0002141 176.4814 246.1618 15.54223596103569";
+    "2 25544  51.6416  84.0319 0001818 251.3399 108.7556 15.54118379 25249";
+    */
+const char TLE1[] =
+    "1  1806U 65098B   18082.61573098 +.00000412 +00000-0 +14450-3 0  9995";
+const char TLE2[] =
+    "2  1806 079.7955 296.9175 1438476 253.8471 089.9975 12.05500542286053";
 
 /**
 * notes:
@@ -46,18 +52,66 @@ int main() {
     // TODO(djbaumann): maybe add a user interface in a separate thread
     // for controlling the dish & sending commands
     if (groundstation.targetVisible() && groundstation.status() == ON_TARGET) {
+      cout << "1" << endl;
       groundstation.transmit();
+    } else if (groundstation.targetVisible()) {
+      cout << "2" << endl;
       groundstation.track();
     } else if (!groundstation.targetVisible() &&
                groundstation.status() == WAITING) {
+      cout << "3" << endl;
       groundstation.wait();
     } else {
+      cout << "4" << endl;
       groundstation.moveToNextAppearance();
     }
   }
-
   return 0;
 }
+
+// int main() {
+//   CoordGeodetic geo(LATITUDE, LONGITUDE, ELEVATION);
+//   Tle tle(NAME, TLE1, TLE2);
+//   SGP4 sgp4(tle);
+
+//   std::cout << tle << std::endl;
+
+//   /*
+//    * generate 7 day schedule
+//    */
+//   DateTime start_date = DateTime::Now(true);
+//   DateTime end_date(start_date.AddDays(7.0));
+
+//   std::list<PassDetails_t> pass_list;
+
+//   std::cout << "Start time: " << start_date << std::endl;
+//   std::cout << "End time  : " << end_date << std::endl << std::endl;
+
+//   /*
+//    * generate passes
+//    */
+//   pass_list = GeneratePassList(geo, &sgp4, start_date, end_date, 180);
+
+//   if (pass_list.begin() == pass_list.end()) {
+//     std::cout << "No passes found" << std::endl;
+//   } else {
+//     std::stringstream ss;
+
+//     ss << std::right << std::setprecision(1) << std::fixed;
+
+//     std::list<PassDetails_t>::const_iterator itr = pass_list.begin();
+//     do {
+//       ss << "AOS: " << itr->aos << ", LOS: " << itr->los
+//          << ", Max El: " << std::setw(4)
+//          << Util::RadiansToDegrees(itr->max_elevation)
+//          << ", Duration: " << (itr->los - itr->aos) << std::endl;
+//     } while (++itr != pass_list.end());
+
+//     std::cout << ss.str();
+//   }
+
+//   return 0;
+// }
 
 // int old_main() {
 // // Assume dish is on top of LoCSST, altitude roughly 40 meters (0.040km)

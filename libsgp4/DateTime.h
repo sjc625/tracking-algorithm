@@ -42,7 +42,7 @@ namespace
 /**
  * @brief Represents an instance in time.
  */
-class DateTime
+class   DateTime
 {
 public:
     /**

@@ -1,0 +1,1 @@
+/usr/bin/c++  -std=c++11 -g -Wall  -rdynamic CMakeFiles/tracking-algorithm.dir/src/Dish.cpp.o CMakeFiles/tracking-algorithm.dir/src/ISS-track.cpp.o CMakeFiles/tracking-algorithm.dir/src/Satellite.cpp.o CMakeFiles/tracking-algorithm.dir/src/passpredict.cpp.o CMakeFiles/tracking-algorithm.dir/src/positionDish.cpp.o  -o bin/tracking-algorithm libsgp4/libsgp4.a -lrt -lpthread 

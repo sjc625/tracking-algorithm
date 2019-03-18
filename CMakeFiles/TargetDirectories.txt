@@ -1,0 +1,15 @@
+/home/osboxes/SpaceHAUC/tracking-algorithm/CMakeFiles/install/strip.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/CMakeFiles/edit_cache.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/CMakeFiles/tracking-algorithm.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/CMakeFiles/rebuild_cache.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/CMakeFiles/list_install_components.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/CMakeFiles/install/local.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/CMakeFiles/install.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/CMakeFiles/install/strip.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/CMakeFiles/install/local.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/CMakeFiles/sgp4s.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/CMakeFiles/sgp4.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/CMakeFiles/rebuild_cache.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/CMakeFiles/edit_cache.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/CMakeFiles/list_install_components.dir
+/home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/CMakeFiles/install.dir

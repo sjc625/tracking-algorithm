@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <iostream>
 #include "../libsgp4/Util.h"
+#include "positionDish.h"
 
 Dish::~Dish() {
   if (mpLocation != nullptr) {
@@ -29,7 +30,8 @@ void Dish::track() {
   CoordTopocentric topo = mpLocation->GetLookAngle(eci);
 
   // move there
-  move(topo.azimuth, topo.elevation);
+  PA(topo.elevation);
+  PB(topo.azimuth);
 }
 
 void Dish::wait() {
@@ -48,7 +50,8 @@ void Dish::moveToNextAppearance() {
   CoordTopocentric topo = mpLocation->GetLookAngle(eci);
 
   // move there
-  move(topo.azimuth, topo.elevation);
+  PA(topo.elevation);
+  PB(topo.azimuth);
   mCurrentStatus = WAITING;
 }
 
@@ -71,11 +74,13 @@ bool Dish::targetVisible() const {
 }
 
 void Dish::move(double azimuth, double elevation) {
-  // somehow move to the given position
+  /*// somehow move to the given position
   mCurrentStatus = MOVING;
   std::cout << "Moving to: Azimuth = " << Util::RadiansToDegrees(azimuth)
             << " deg.  Elevation = " << Util::RadiansToDegrees(elevation)
             << " deg." << std::endl;
+            */
+            return;
 }
 
 std::list<PassDetails_t> Dish::generatePassList() {

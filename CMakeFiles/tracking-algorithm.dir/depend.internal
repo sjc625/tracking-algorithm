@@ -5,6 +5,7 @@ CMakeFiles/tracking-algorithm.dir/src/Dish.cpp.o
  /home/osboxes/SpaceHAUC/tracking-algorithm/include/Dish.h
  /home/osboxes/SpaceHAUC/tracking-algorithm/include/Satellite.h
  /home/osboxes/SpaceHAUC/tracking-algorithm/include/passpredict.h
+ /home/osboxes/SpaceHAUC/tracking-algorithm/include/positionDish.h
  /home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/CoordGeodetic.h
  /home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/CoordTopocentric.h
  /home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/DateTime.h
@@ -78,4 +79,5 @@ CMakeFiles/tracking-algorithm.dir/src/passpredict.cpp.o
  /home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/Vector.h
  /home/osboxes/SpaceHAUC/tracking-algorithm/src/passpredict.cpp
 CMakeFiles/tracking-algorithm.dir/src/positionDish.cpp.o
+ /home/osboxes/SpaceHAUC/tracking-algorithm/include/positionDish.h
  /home/osboxes/SpaceHAUC/tracking-algorithm/src/positionDish.cpp

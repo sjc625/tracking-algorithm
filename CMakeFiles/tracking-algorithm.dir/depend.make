@@ -4,6 +4,7 @@
 CMakeFiles/tracking-algorithm.dir/src/Dish.cpp.o: include/Dish.h
 CMakeFiles/tracking-algorithm.dir/src/Dish.cpp.o: include/Satellite.h
 CMakeFiles/tracking-algorithm.dir/src/Dish.cpp.o: include/passpredict.h
+CMakeFiles/tracking-algorithm.dir/src/Dish.cpp.o: include/positionDish.h
 CMakeFiles/tracking-algorithm.dir/src/Dish.cpp.o: libsgp4/CoordGeodetic.h
 CMakeFiles/tracking-algorithm.dir/src/Dish.cpp.o: libsgp4/CoordTopocentric.h
 CMakeFiles/tracking-algorithm.dir/src/Dish.cpp.o: libsgp4/DateTime.h
@@ -77,5 +78,6 @@ CMakeFiles/tracking-algorithm.dir/src/passpredict.cpp.o: libsgp4/Util.h
 CMakeFiles/tracking-algorithm.dir/src/passpredict.cpp.o: libsgp4/Vector.h
 CMakeFiles/tracking-algorithm.dir/src/passpredict.cpp.o: src/passpredict.cpp
 
+CMakeFiles/tracking-algorithm.dir/src/positionDish.cpp.o: include/positionDish.h
 CMakeFiles/tracking-algorithm.dir/src/positionDish.cpp.o: src/positionDish.cpp
 

@@ -17,7 +17,7 @@
 
 // Initialize communcation with the positioner
 // Returns the file/device stream
-int initPositioner();
+//int initPositioner();
 
 // Current antenna position request
 //int P(int stream);

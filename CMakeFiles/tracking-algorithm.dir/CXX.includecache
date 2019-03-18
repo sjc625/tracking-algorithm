@@ -42,6 +42,8 @@ list
 ../libsgp4/SGP4.h
 /home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/SGP4.h
 
+/home/osboxes/SpaceHAUC/tracking-algorithm/include/positionDish.h
+
 /home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/CoordGeodetic.h
 Util.h
 /home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/Util.h
@@ -179,8 +181,8 @@ iostream
 -
 ../libsgp4/Util.h
 /home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/Util.h
-positionDish.h
-/home/osboxes/SpaceHAUC/tracking-algorithm/src/positionDish.h
+../include/positionDish.h
+/home/osboxes/SpaceHAUC/tracking-algorithm/include/positionDish.h
 
 /home/osboxes/SpaceHAUC/tracking-algorithm/src/ISS-track.cpp
 iostream
@@ -235,6 +237,6 @@ iostream
 -
 string
 -
-positionDish.h
-/home/osboxes/SpaceHAUC/tracking-algorithm/src/positionDish.h
+../include/positionDish.h
+/home/osboxes/SpaceHAUC/tracking-algorithm/include/positionDish.h
 

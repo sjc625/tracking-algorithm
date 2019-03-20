@@ -5,7 +5,6 @@
 #include <unistd.h>
 #include <iostream>
 #include "../libsgp4/Util.h"
-#include "../include/positionDish.h"
 
 Dish::~Dish() {
   if (mpLocation != nullptr) {

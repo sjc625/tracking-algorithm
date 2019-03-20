@@ -15,13 +15,11 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include <exception>
 #include "../include/positionDish.h"
 
 // Initialize communcation with the positioner
 // Returns the device/file stream
-
-
-
 // Current antenna position request
 /*int P(int stream)
 {
@@ -41,25 +39,33 @@
 */
 
 // Change antenna elevation
-int PA(int degrees)
-{
-  int stream = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY | O_NDELAY);
   // MAY NEED TO CHANGE PORT DEPENDING ON CONNECTOR!!
-  if (stream < 0)
-  {
-    perror("Unable to open UART");
-    return stream;
-  }
+  // TODO make port configurable via argv
+Patch::Patch( std::string inputPort ) : inputPort_( inputPort ) {
+  int stream = open( inputPort_.c_str(), O_RDWR | O_NOCTTY | O_NDELAY );
 
+  if (stream < 0) {
+    throw std::runtime_error( "Unable to open UART" );
+  }
+}
+
+const int& Patch::operator()( int degrees ) {
   struct termios options;
-  tcgetattr(stream, &options);
+  tcgetattr(stream_, &options);
   options.c_cflag = B2400 | CS8 | CLOCAL | CREAD;
   options.c_iflag = IGNPAR;
   options.c_oflag = 0;
   options.c_lflag = 0;
-  tcflush(stream, TCIFLUSH);
-  tcsetattr(stream, TCSANOW, &options);
-  return stream;
+  tcflush(stream_, TCIFLUSH);
+  tcsetattr(stream_, TCSANOW, &options);
+  return stream_;
+}
+
+Patch::~Patch() {
+   close( stream_ );
+}
+
+/*
   int i = 0;
   char cmd[] = {HEX_P, HEX_A, HEX_SPACE, 0, 0, 0, 0};
   int temp;
@@ -89,27 +95,7 @@ int PA(int degrees)
 
   return 0;
 }
-
-
 // Change antenna azimuth
-int PB(int degrees)
-{
-  int stream = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY | O_NDELAY);
-  // MAY NEED TO CHANGE PORT DEPENDING ON CONNECTOR!!
-  if (stream < 0)
-  {
-    perror("Unable to open UART");
-    return stream;
-  }
-
-  struct termios options;
-  tcgetattr(stream, &options);
-  options.c_cflag = B2400 | CS8 | CLOCAL | CREAD;
-  options.c_iflag = IGNPAR;
-  options.c_oflag = 0;
-  options.c_lflag = 0;
-  tcflush(stream, TCIFLUSH);
-  tcsetattr(stream, TCSANOW, &options);
   return stream;
   int i = 0;
   char cmd[] = {HEX_P, HEX_B, HEX_SPACE, 0, 0, 0, 0};
@@ -142,6 +128,8 @@ int PB(int degrees)
 
   return 0;
 }
+
+*/
 
 char to_Hex(int integer) {
   switch(integer) {

@@ -8,8 +8,10 @@
 #define INCLUDE_DISH_H_
 
 #include <list>
-#include "../include/Satellite.h"
-#include "../include/passpredict.h"
+#include <string>
+#include "Satellite.h"
+#include "passpredict.h"
+#include "positionDish.h"
 #include "../libsgp4/CoordGeodetic.h"
 #include "../libsgp4/CoordTopocentric.h"
 #include "../libsgp4/Observer.h"
@@ -31,13 +33,14 @@ class Dish {
   SGP4 *mpSGP4;
   DISH_STATUS mCurrentStatus;
   void move(double azimuth, double elevation);
-
+  Patch PA, PB;
  public:
-  Dish(double latitude, double longitude, double elevation)
+  Dish(double latitude, double longitude, double elevation, std::string pa, std::string pb)
       : mpLocation(new Observer(latitude, longitude, elevation)),
         mpTarget(nullptr),
         mpSGP4(nullptr),
-        mCurrentStatus(NO_TARGET) {}
+        mCurrentStatus(NO_TARGET),
+        PA(pa), PB(pb) {};
   ~Dish();
   void transmit();
   void track();

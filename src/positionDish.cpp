@@ -41,25 +41,8 @@
 */
 
 // Change antenna elevation
-int PA(int degrees)
+int PA(int stream, int degrees)
 {
-  int stream = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY | O_NDELAY);
-  // MAY NEED TO CHANGE PORT DEPENDING ON CONNECTOR!!
-  if (stream < 0)
-  {
-    perror("Unable to open UART");
-    return stream;
-  }
-
-  struct termios options;
-  tcgetattr(stream, &options);
-  options.c_cflag = B2400 | CS8 | CLOCAL | CREAD;
-  options.c_iflag = IGNPAR;
-  options.c_oflag = 0;
-  options.c_lflag = 0;
-  tcflush(stream, TCIFLUSH);
-  tcsetattr(stream, TCSANOW, &options);
-  return stream;
   int i = 0;
   char cmd[] = {HEX_P, HEX_A, HEX_SPACE, 0, 0, 0, 0};
   int temp;
@@ -92,25 +75,8 @@ int PA(int degrees)
 
 
 // Change antenna azimuth
-int PB(int degrees)
+int PB(int stream, int degrees)
 {
-  int stream = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY | O_NDELAY);
-  // MAY NEED TO CHANGE PORT DEPENDING ON CONNECTOR!!
-  if (stream < 0)
-  {
-    perror("Unable to open UART");
-    return stream;
-  }
-
-  struct termios options;
-  tcgetattr(stream, &options);
-  options.c_cflag = B2400 | CS8 | CLOCAL | CREAD;
-  options.c_iflag = IGNPAR;
-  options.c_oflag = 0;
-  options.c_lflag = 0;
-  tcflush(stream, TCIFLUSH);
-  tcsetattr(stream, TCSANOW, &options);
-  return stream;
   int i = 0;
   char cmd[] = {HEX_P, HEX_B, HEX_SPACE, 0, 0, 0, 0};
   int temp;

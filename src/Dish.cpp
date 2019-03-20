@@ -4,6 +4,8 @@
 
 #include <unistd.h>
 #include <iostream>
+#include <termios.h>
+#include <fcntl.h>
 #include "../libsgp4/Util.h"
 #include "../include/positionDish.h"
 
@@ -28,10 +30,26 @@ void Dish::track() {
   // follows satellite through the sky
   Eci eci = mpSGP4->FindPosition(DateTime::Now(true));
   CoordTopocentric topo = mpLocation->GetLookAngle(eci);
+  int stream = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY | O_NDELAY);
+  // MAY NEED TO CHANGE PORT DEPENDING ON CONNECTOR!!
+  if (stream < 0)
+  {
+    perror("Unable to open UART");
+    exit(1);
+  }
 
+  struct termios options;
+  tcgetattr(stream, &options);
+  options.c_cflag = B2400 | CS8 | CLOCAL | CREAD;
+  options.c_iflag = IGNPAR;
+  options.c_oflag = 0;
+  options.c_lflag = 0;
+  tcflush(stream, TCIFLUSH);
+  tcsetattr(stream, TCSANOW, &options);
   // move there
-  PA(topo.elevation);
-  PB(topo.azimuth);
+  PA(stream, topo.elevation);
+  PB(stream, topo.azimuth);
+  close(stream);
 }
 
 void Dish::wait() {
@@ -48,11 +66,27 @@ void Dish::moveToNextAppearance() {
 
   Eci eci = mpSGP4->FindPosition(nextPass.aos);
   CoordTopocentric topo = mpLocation->GetLookAngle(eci);
+  int stream = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY | O_NDELAY);
+  // MAY NEED TO CHANGE PORT DEPENDING ON CONNECTOR!!
+  if (stream < 0)
+  {
+    perror("Unable to open UART");
+    exit(1);
+  }
 
+  struct termios options;
+  tcgetattr(stream, &options);
+  options.c_cflag = B2400 | CS8 | CLOCAL | CREAD;
+  options.c_iflag = IGNPAR;
+  options.c_oflag = 0;
+  options.c_lflag = 0;
+  tcflush(stream, TCIFLUSH);
+  tcsetattr(stream, TCSANOW, &options);
   // move there
-  PA(topo.elevation);
-  PB(topo.azimuth);
+  PA(stream, topo.elevation);
+  PB(stream, topo.azimuth);
   mCurrentStatus = WAITING;
+  close(stream);
 }
 
 void Dish::setTarget(const Satellite &target) {

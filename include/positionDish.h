@@ -32,7 +32,7 @@ class Patch {
  public:
    Patch(std::string inputPort);
    ~Patch();
-   const int& operator()( int degrees );
+   const int operator()( int degrees );
 };
 
 char to_Hex(int integer);

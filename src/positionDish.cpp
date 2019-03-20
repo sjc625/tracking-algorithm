@@ -56,7 +56,7 @@ Patch::Patch( std::string inputPort ) : inputPort_( inputPort ) {
    tcsetattr(stream_, TCSANOW, &options);
 }
 
-const int& Patch::operator()( int degrees ) {
+const int Patch::operator()( int degrees ) {
    int i = 0;
    char cmd[] = {HEX_P, HEX_A, HEX_SPACE, 0, 0, 0, 0};
    int temp;

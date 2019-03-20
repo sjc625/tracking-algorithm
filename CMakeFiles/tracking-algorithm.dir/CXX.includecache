@@ -179,6 +179,10 @@ unistd.h
 -
 iostream
 -
+termios.h
+-
+fcntl.h
+-
 ../libsgp4/Util.h
 /home/osboxes/SpaceHAUC/tracking-algorithm/libsgp4/Util.h
 ../include/positionDish.h

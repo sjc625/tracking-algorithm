@@ -15,6 +15,8 @@
 #define HEX_CR        0x0D
 #define HEX_SPACE     0x20
 
+#include <string>
+
 // Initialize communcation with the positioner
 // Returns the file/device stream
 //int initPositioner();
@@ -23,10 +25,15 @@
 //int P(int stream);
 
 // Change antenna elevation
-int PA(int stream, int degrees);
-
-// Change antenna azimuth
-int PB(int stream, int degrees);
+class Patch {
+ private:
+   int stream_;
+   std::string inputPort_;
+ public:
+   Patch(std::string inputPort);
+   ~Patch();
+   const int operator()( int degrees );
+};
 
 char to_Hex(int integer);
 

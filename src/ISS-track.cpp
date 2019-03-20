@@ -44,7 +44,7 @@ const char TLE2[] =
 */
 
 int main() {
-  Dish groundstation(LATITUDE, LONGITUDE, ELEVATION);
+  Dish groundstation(LATITUDE, LONGITUDE, ELEVATION, "/dev/ttyUSB0", "/dev/ttyUSB0");
   Satellite spacehauc(NAME, TLE1, TLE2);
   groundstation.setTarget(spacehauc);
 

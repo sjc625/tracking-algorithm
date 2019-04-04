@@ -23,10 +23,10 @@
 //int P(int stream);
 
 // Change antenna elevation
-int PA(int stream, int degrees);
+int PA(int stream, double degrees);
 
 // Change antenna azimuth
-int PB(int stream, int degrees);
+int PB(int stream, double degrees);
 
 char to_Hex(int integer);
 

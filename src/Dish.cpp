@@ -47,6 +47,7 @@ void Dish::track() {
   tcflush(stream, TCIFLUSH);
   tcsetattr(stream, TCSANOW, &options);
   // move there
+  //std::cout << "azimuth :" << topo.azimuth << "elevation :" << topo.elevation << "\n";
   PA(stream, topo.elevation);
   PB(stream, topo.azimuth);
   close(stream);
